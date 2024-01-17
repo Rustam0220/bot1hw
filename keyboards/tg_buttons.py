@@ -1,5 +1,5 @@
 from aiogram.types import (
-    InLineKeyboardMarkup,
+    InlineKeyboardMarkup,
     InlineKeyboardButton
 )
 
@@ -39,30 +39,36 @@ async def football_button():
             callback_data="football"
         )
 
-    async def basketball_answers():
-        return InlineKeyboardButton(
-            "Basketball 🏀",
-            callback_data="basketball"
-        )
+async def basketball_answers():
+    return InlineKeyboardButton(
+        "Basketball 🏀",
+        callback_data="basketball"
+    )
 
-    async def iphone_button():
-        return InlineKeyboardButton(
-            "iPhone 📱",
-            callback_data="iphone"
-        )
+async def iphone_button():
+    return InlineKeyboardButton(
+        "iPhone 📱",
+        callback_data="iphone"
+    )
 
-    async def samsung_button():
-        return InlineKeyboardButton(
-            "Samsung 📱",
-            callback_data="samsung"
-        )
+async def samsung_button():
+    return InlineKeyboardButton(
+        "Samsung 📱",
+        callback_data="samsung"
+    )
 
 
 
 async def questionnaire_second_answers():
     markup = InlineKeyboardMarkup()
-    football_button = await football_button()
-    basketball_button = await basketball_button()
+    football_button = InlineKeyboardButton(
+            "Football ⚽️",
+            callback_data="football"
+        )
+    basketball_button = InlineKeyboardButton(
+        "Basketball 🏀",
+        callback_data="basketball"
+    )
     markup.add(football_button)
     markup.add(basketball_button)
     return markup
@@ -70,8 +76,14 @@ async def questionnaire_second_answers():
 
 async def questionnaire_third_answers():
     markup = InlineKeyboardMarkup()
-    iphone_button = await iphone_button()
-    samsung_button = await samsung_button()
+    iphone_button = InlineKeyboardButton(
+        "iPhone 📱",
+        callback_data="iphone"
+    )
+    samsung_button = InlineKeyboardButton(
+        "Samsung 📱",
+        callback_data="samsung"
+    )
     markup.add(iphone_button)
     markup.add(samsung_button)
     return markup

@@ -1,14 +1,14 @@
 from aiogram import types, Dispatcher
 from config import bot
 from database import db
-from keyboards import inline_buttons
+from keyboards import tg_buttons
 
 
 async def tg_questionnaire(call: types.CallbackQuery):
     await bot.send_message(
         chat_id=call.from_user.id,
         text="Python 🐍 or Mojo 🔥 ?",
-        reply_markup=await inline_buttons.questionnaire_first_answers()
+        reply_markup=await tg_buttons.questionnaire_first_answers()
     )
 
 
@@ -53,7 +53,7 @@ async def samsung_answers(call: types.CallbackQuery):
     )
 
 def register_questionnaire_handlers(dp: Dispatcher):
-    dp.register_callback_query_handler(justice_questionnaire,
+    dp.register_callback_query_handler(tg_questionnaire,
                                        lambda call: call.data == "start_questionnaire")
     dp.register_callback_query_handler(python_answers,
                                        lambda call: call.data == "python2")

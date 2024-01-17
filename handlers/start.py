@@ -3,7 +3,7 @@ import sqlite3
 from aiogram import types, Dispatcher
 from config import bot
 from database import db
-from keyboards import inline_buttons
+from keyboards import tg_buttons
 
 
 async def start_button(message: types.Message):
@@ -22,7 +22,7 @@ async def start_button(message: types.Message):
     await bot.send_message(
         chat_id=message.from_user.id,
         text=f'Hello {message.from_user.first_name}',
-        reply_markup=await inline_buttons.start_keyboard()
+        reply_markup=await tg_buttons.start_keyboard()
     )
 
 
