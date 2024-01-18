@@ -12,6 +12,7 @@ async def tg_questionnaire(call: types.CallbackQuery):
     )
 
 
+
 async def python_answers(call: types.CallbackQuery):
     await bot.send_message(
         chat_id=call.from_user.id,
@@ -25,6 +26,21 @@ async def mojo_answers(call: types.CallbackQuery):
         text="Dont lie, Mojo is in alpha version.",
     )
 
+async def check_ban_status(call: types.CallbackQuery):
+    datab = db.Database()
+    ban_user = datab.sql_select_ban_user(
+        tg_id=call.from_user.id
+    )
+    if ban_user:
+        await bot.send_message(
+            chat_id=call.from_user.id,
+            text=f"You have been flagged for violating the rules. Number of violations: {ban_user['count']}"
+        )
+    else:
+        await bot.send_message(
+            chat_id=call.from_user.id,
+            text="You are not flagged for any violations."
+        )
 async def football_answers(call: types.CallbackQuery):
     await bot.send_message(
         chat_id=call.from_user.id,
@@ -59,6 +75,8 @@ def register_questionnaire_handlers(dp: Dispatcher):
                                        lambda call: call.data == "python2")
     dp.register_callback_query_handler(mojo_answers,
                                        lambda call: call.data == "mojo")
+    dp.register_callback_query_handler(check_ban_status,
+                                       lambda call: call.data == "check_ban_status")
     dp.register_callback_query_handler(football_answers,
                                        lambda call: call.data == "football")
     dp.register_callback_query_handler(basketball_answers,

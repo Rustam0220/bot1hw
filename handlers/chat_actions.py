@@ -20,12 +20,12 @@ async def chat_messages(message: types.Message):
             )
             print(potential)
             if potential:
-                 #if potential["count"] >= 3:
-                     #bot.ban_chat_member(
-                         #chat_id=message.chat.id,
-                        # user_id=message.from_user.id,
-                       # until_date=datetime.datetime.now() + datetime.timedelta(minutes=2)
-                   #  )
+                 if potential["count"] >= 3:
+                    bot.ban_chat_member(
+                        chat_id=message.chat.id,
+                         user_id=message.from_user.id,
+                        until_date=datetime.datetime.now() + datetime.timedelta(minutes=2)
+                     )
                  datab.sql_update_ban_count(
                     tg_id=message.from_user.id
                 )
@@ -52,3 +52,6 @@ async def chat_messages(message: types.Message):
 
 def register_chat_actions_handlers(dp: Dispatcher):
     dp.register_message_handler(chat_messages)
+
+
+

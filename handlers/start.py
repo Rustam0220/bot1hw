@@ -1,7 +1,6 @@
 import sqlite3
 
 from aiogram import types, Dispatcher
-from config import bot
 from config import bot, MEDIA_DESTINATION
 from database import db
 from const import START_MENU
@@ -29,10 +28,8 @@ async def start_button(message: types.Message):
             caption=START_MENU.format(
                 name=message.from_user.first_name
             ),
-           reply_markup=await tg_buttons.start_keyboard()
+            reply_markup=await tg_buttons.start_keyboard()
         )
-
-
 
 
 def register_start_handlers(dp: Dispatcher):

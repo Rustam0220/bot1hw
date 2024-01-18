@@ -1,11 +1,14 @@
 START_MENU = "Hello {name}\n" \
-             "Im Rustam_bot, " \
-             "I can start Questionnaire by " \
-             "pressing Start Questionnaire Button\n\n" \
-             "I can filter bad words in chat.\n" \
-             "(In third time i will block you 👿)"
+             "I'm Rustam_bot, " \
+             "I can start the Questionnaire by " \
+             "pressing the Start Questionnaire Button\n\n" \
+             "I can filter bad words in the chat.\n" \
+             "(If you violate the rules, you will be banned 👿)"
 
 BAN_USER_TEXT = "User: {name}\n" \
-                "U can not jet down curse words\n" \
-                "In third time u will be banned!!!\n" \
-                "Count: {count}"
+                "You have used inappropriate language in the chat.\n" \
+                "This is your {count} violation.\n" \
+                "Please be respectful in the chat."
+
+BAN_STATUS_TEXT = "You have been flagged for violating the rules. Number of violations: {count}"
+NO_BAN_STATUS_TEXT = "You are not flagged for any violations."

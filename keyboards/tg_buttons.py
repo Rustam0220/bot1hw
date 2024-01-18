@@ -3,14 +3,18 @@ from aiogram.types import (
     InlineKeyboardButton
 )
 
-
 async def start_keyboard():
     markup = InlineKeyboardMarkup()
     questionnaire_button = InlineKeyboardButton(
         "Questionnaire 🔥",
         callback_data="start_questionnaire"
     )
+    check_ban_button = InlineKeyboardButton(
+        "Check Ban Status",
+        callback_data="check_ban_status"
+    )
     markup.add(questionnaire_button)
+    markup.add(check_ban_button)
     return markup
 
 
