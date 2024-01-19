@@ -12,3 +12,10 @@ BAN_USER_TEXT = "User: {name}\n" \
 
 BAN_STATUS_TEXT = "You have been flagged for violating the rules. Number of violations: {count}"
 NO_BAN_STATUS_TEXT = "You are not flagged for any violations."
+
+PROFILE_TEXT = "Nickname: {nickname}\n" \
+               "Bio: {bio}\n" \
+               "Age: {age}\n" \
+               "Zodiac-Sign: {sign}\n" \
+               "Profession: {profession}\n" \
+               "IQ: {IQ}\n"
