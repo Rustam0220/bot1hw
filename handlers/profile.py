@@ -25,8 +25,6 @@ async def my_profile_call(call: types.CallbackQuery):
                     bio=profile['bio'],
                     age=profile['age'],
                     sign=profile['sign'],
-                    profession=profile['profession'],
-                    IQ=profile['IQ'],
                 ),
                 reply_markup=await tg_buttons.my_profile_keyboard()
             )
@@ -57,8 +55,6 @@ async def random_filter_profile_call(call: types.CallbackQuery):
                 bio=random_profile['bio'],
                 age=random_profile['age'],
                 sign=random_profile['sign'],
-                profession=random_profile['profession'],
-                IQ=random_profile['IQ'],
             ),
             reply_markup=await tg_buttons.like_dislike_keyboard(
                 owner=random_profile['telegram_id'])

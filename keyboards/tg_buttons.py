@@ -25,11 +25,15 @@ async def start_keyboard():
         "View Profiles 🧑🏻‍💻",
         callback_data="view_profiles"
     )
+    reference_button = InlineKeyboardButton(
+        "Referral Menu 🐉",
+        callback_data="reference_menu"
+    )
     markup.add(questionnaire_button)
-    markup.add(check_ban_button)
     markup.add(registration_button)
     markup.add(my_profile_button)
     markup.add(view_profiles_button)
+    markup.add(reference_button)
     return markup
 
 
@@ -135,4 +139,13 @@ async def my_profile_keyboard():
     )
     markup.add(update_button)
     markup.add(delete_button)
+    return markup
+
+async def referral_keyboard():
+    markup = InlineKeyboardMarkup()
+    generate_button = InlineKeyboardButton(
+        "Generate Link 🔗",
+        callback_data="generate_link"
+    )
+    markup.add(generate_button)
     return markup

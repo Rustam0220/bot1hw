@@ -149,8 +149,8 @@ async def load_photo(message: types.Message,
             bio=data['bio'],
             age=data['age'],
             sign=data['sign'],
-            profession=data['profession'],
-            IQ=data['IQ'],
+            # profession=data['profession'],
+            # IQ=data['IQ'],
             photo=path.name,
         )
 
