@@ -23,6 +23,16 @@ async def reference_menu_call(call: types.CallbackQuery):
         reply_markup=await tg_buttons.referral_keyboard()
     )
 
+async def my_refs(call: types.CallbackQuery):
+    datab = Database()
+    my_users = datab.sql_select_my(tg_id=call.from_user.id)
+    list_ref = ''
+    for user in my_users:
+        list_ref += (f"@{user['username']}\n\n")
+    await bot.send_message(
+        chat_id=call.from_user.id,
+        text=list_ref
+    )
 
 async def generate_link(call: types.CallbackQuery):
     datab = Database()
@@ -54,4 +64,8 @@ def register_reference_handlers(dp: Dispatcher):
     dp.register_callback_query_handler(
         generate_link,
         lambda call: call.data == "generate_link"
+    )
+    dp.register_callback_query_handler(
+        my_refs,
+        lambda call: call.data == "my_r"
     )

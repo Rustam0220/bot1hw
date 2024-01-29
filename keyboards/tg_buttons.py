@@ -147,5 +147,10 @@ async def referral_keyboard():
         "Generate Link 🔗",
         callback_data="generate_link"
     )
+    my_refs = InlineKeyboardButton(
+        "My referrals",
+        callback_data="my_r"
+    )
     markup.add(generate_button)
+    markup.add(my_refs)
     return markup

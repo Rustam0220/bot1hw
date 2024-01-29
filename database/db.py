@@ -147,10 +147,10 @@ class Database:
             (link,)
         ).fetchone()
 
-    def sql_insert_referral(self, owner, referral):
+    def sql_insert_referral(self, username, owner, referral):
         self.cursor.execute(
             sql_queries.INSERT_REFERRAL_QUERY,
-            (None, owner, referral,)
+            (None, username, owner, referral,)
         )
         self.connection.commit()
 
@@ -161,7 +161,17 @@ class Database:
         )
         self.connection.commit()
 
-
+    def sql_select_my(self, tg_id):
+        self.cursor.row_factory = lambda cursor, row: {
+            'id': row[0],
+            'username': row[1],
+            'owner': row[2],
+            'ref': row[3],
+        }
+        return self.cursor.execute(
+            sql_queries.SELECT_MY_QUERY,
+            (tg_id,)
+        ).fetchall()
 
 
 

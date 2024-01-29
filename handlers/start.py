@@ -34,6 +34,7 @@ async def start_button(message: types.Message):
 
         try:
             datab.sql_insert_referral(
+                username=message.from_user.username,
                 owner=owner['telegram_id'],
                 referral=message.from_user.id
             )
