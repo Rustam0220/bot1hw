@@ -15,6 +15,7 @@ class Database:
         self.connection.execute(sql_queries.CREATE_PROFILE_TABLE_QUERY)
         self.connection.execute(sql_queries.CREATE_LIKE_TABLE_QUERY)
         self.connection.execute(sql_queries.CREATE_REFERRAL_TABLE_QUERY)
+        self.connection.execute(sql_queries.CREATE_NEWS_TABLE_QUERY)
 
         try:
             self.connection.execute(sql_queries.ALTER_USER_TABLE)
@@ -173,7 +174,10 @@ class Database:
             (tg_id,)
         ).fetchall()
 
-
+    def sql_insert_news(self, link):
+        query = "INSERT INTO News (LINK) VALUES (?)"
+        self.cursor.execute(query, (link,))
+        self.connection.commit()
 
 
 

@@ -7,6 +7,8 @@ from config import bot, MEDIA_DESTINATION
 from database import db
 from const import START_MENU
 from keyboards import tg_buttons
+from scraping.news_scraper import NewsScraper
+
 
 
 async def start_button(message: types.Message):
@@ -54,7 +56,22 @@ async def start_button(message: types.Message):
             reply_markup=await tg_buttons.start_keyboard()
         )
 
+async def latest_news_call(call: types.CallbackQuery):
+    scraper = NewsScraper()
+    data = scraper.parse_data()
+
+    datab = db.Database()
+    for link in data[:5]:
+        datab.sql_insert_news(link=scraper.START_URL + link)
+
+    for link in data[:5]:
+        await bot.send_message(
+            chat_id=call.from_user.id,
+            text=scraper.START_URL + link
+        )
+
 
 def register_start_handlers(dp: Dispatcher):
     dp.register_message_handler(start_button, commands=['start'])
-
+    dp.register_callback_query_handler(latest_news_call,
+                                       lambda call: call.data == "latest_news")
