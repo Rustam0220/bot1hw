@@ -33,6 +33,7 @@ async def start_keyboard():
         "Latest News 🗞️",
         callback_data="latest_news"
     )
+
     markup.add(questionnaire_button)
     markup.add(registration_button)
     markup.add(my_profile_button)
