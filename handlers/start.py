@@ -8,7 +8,7 @@ from database import db
 from const import START_MENU
 from keyboards import tg_buttons
 #from scraping.news_scraper import NewsScraper
-from scraping.async_scraper import AsyncNewsScraper
+#from scraping.async_scraper import AsyncNewsScraper
 
 
 
@@ -71,26 +71,27 @@ async def start_button(message: types.Message):
             #chat_id=call.from_user.id,
             #text=scraper.START_URL + link
         #)
-async def latest_news_call(call: types.CallbackQuery):
-    scraper = AsyncNewsScraper()
-    text = await scraper.fetch_data()
-    data = scraper.parse_data(text)
+#async def latest_news_call(call: types.CallbackQuery):
+    #scraper = AsyncNewsScraper()
+    #text = await scraper.fetch_data()
+    #data = scraper.parse_data(text)
 
-    datab = db.Database()
-    for link in data[:5]:
-        datab.sql_insert_news(link=scraper.START_URL + link)
+    #datab = db.Database()
+    #for link in data[:5]:
+        #datab.sql_insert_news(link=scraper.START_URL + link)
 
-    for link in data[:5]:
-        await bot.send_message(
-            chat_id=call.from_user.id,
-            text=scraper.START_URL + link
-        )
+    #for link in data[:5]:
+        #await bot.send_message(
+            #chat_id=call.from_user.id,
+            #text=scraper.START_URL + link
+        #)
 
 
 def register_start_handlers(dp: Dispatcher):
     dp.register_message_handler(start_button, commands=['start'])
-    dp.register_callback_query_handler(latest_news_call,
-                                       lambda call: call.data == "latest_news")
+    #dp.register_callback_query_handler(latest_news_call,
+                                       #lambda call: call.data == "latest_news")
+
 
 
 
